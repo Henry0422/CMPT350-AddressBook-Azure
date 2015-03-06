@@ -22,14 +22,14 @@
 				id INT AUTO_INCREMENT PRIMARY KEY,
 				firstname VARCHAR(30) NOT NULL,
 				lastname VARCHAR(30) NOT NULL,
-				company VARCHAR(30),
+				company VARCHAR(30) NULL,
 				phone INT NOT NULL,
 				email VARCHAR(255) NOT NULL,
-				url VARCHAR(255),
+				url VARCHAR(255) Null,
 				address VARCHAR(255) NOT NULL,
-				birthday DATE,
+				birthday DATE NULL,
 				add_date DATE NOT NULL,
-				note VARCHAR(255)
+				note VARCHAR(255) NULL
 			)";
 			
 			if($conn->query($sql) == TRUE)
