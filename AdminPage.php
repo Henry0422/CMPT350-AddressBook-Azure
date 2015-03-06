@@ -22,22 +22,23 @@
 				<th>Note</th>
 			</tr>
 		<?php
-			$servername="lovett.usask.ca";
-		    $username="cmpt350_roh919";
-		    $password="npig97rako";
-			$dbname="cmpt350_roh919";
-			
-		    $conn = new mysqli($servername, $username, $password, $dbname);
-
-		    if($conn->connect_error)
-				die("Connection failed".$conn->connect_error);
-		    else
-				echo "Connection successfully";
+			$server = "tcp:gpntf5hrgo.database.windows.net,1433";
+			$user = "SQLAdmin";
+			$pwd = "henry0422!";
+			$db = "Assignment2";
+			try{
+				$conn = new PDO( "sqlsrv:Server= $server ; Database = $db ", $user, $pwd);
+				$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+				echo "Connection successfully</br>";
+			}
+			catch(Exception $e){
+				die("Connection failed: ".print_r($e));
+			}
 				
 				
 		    $id=$_GET['ContactID'];
 			$sql = "SELECT * FROM AddressBook";
-			$result = $conn->query($sql);
+			$result = $conn->exec($sql);
 		
 			if($result->num_rows >0){
 				while($row = $result->fetch_assoc()){
