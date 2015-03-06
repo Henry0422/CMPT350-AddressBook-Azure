@@ -18,25 +18,26 @@
 				die("Connection failed: ".print_r($e));
 			}
 
-			$sql = "CREATE TABLE AddressBook(
-				id INT AUTO_INCREMENT PRIMARY KEY,
-				firstname VARCHAR(30) NOT NULL,
-				lastname VARCHAR(30) NOT NULL,
-				company VARCHAR(30) NULL,
-				phone INT NOT NULL,
-				email VARCHAR(255) NOT NULL,
-				url VARCHAR(255) Null,
-				address VARCHAR(255) NOT NULL,
-				birthday DATE NULL,
-				add_date DATE NOT NULL,
-				note VARCHAR(255) NULL
-			)";
-			
-			if($conn->query($sql) == TRUE)
+			try{
+				$sql = "CREATE TABLE AddressBook(
+					id INT AUTO_INCREMENT PRIMARY KEY,
+					firstname VARCHAR(30) NOT NULL,
+					lastname VARCHAR(30) NOT NULL,
+					company VARCHAR(30) NULL,
+					phone INT NOT NULL,
+					email VARCHAR(255) NOT NULL,
+					url VARCHAR(255) Null,
+					address VARCHAR(255) NOT NULL,
+					birthday DATE NULL,
+					add_date DATE NOT NULL,
+					note VARCHAR(255) NULL
+				)";
+				$conn->exec($sql);
 				echo "Table AddressBook created succefully";
-			else
-				echo "Error creating table: ".$conn->error;
-			
+			}
+			catch(PDOException $e){
+				echo $sql."<br>".$e->getMessage();
+			}
 		 ?> 
 	</body>
 </html>
