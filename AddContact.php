@@ -26,8 +26,8 @@
 				$conn->exec($sql);
 				$last_id = $conn->lastInsertId();
 				echo "New record created successfully. Last inserted ID is: ".$last_id;
-				}
-			catch(){
+			}
+			catch(Exception $e){
 				echo $sql."<br>".$e->getMessage();
 			}
 
