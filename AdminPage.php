@@ -43,7 +43,7 @@
 				$result = $conn->query($sql);
 			
 				if($result->rowCount()>0){
-					while($result as $row){
+					while($row = $result->->fetch(PDO::FETCH_ASSOC) ){
 						echo "<tr>
 							<td>".$row['id']."</td>
 							<td>".$row['firstname']." </td>
