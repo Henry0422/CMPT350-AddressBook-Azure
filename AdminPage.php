@@ -32,9 +32,7 @@ class TableRows extends RecursiveIteratorIterator {
      } 
 
      function endChildren() { 
-         echo "</tr>" ."<a href='update.php?ContactID=".$row["id"]."'>Update</a>".
-         				"<a href='DeleteContact.php?ContactID=".$row["id"].
-         				"'onclick='return confirm(\"Are you sure\")'>Delete</a>"."\n";
+         echo "</tr>"."\n";
      } 
 } 
 
@@ -58,6 +56,9 @@ try {
 }
 catch(PDOException $e) {
      echo "Error: " . $e->getMessage();
+     echo "<a href='update.php?ContactID=".$row["id"]."'>Update</a>".
+         				"<a href='DeleteContact.php?ContactID=".$row["id"].
+         				"'onclick='return confirm(\"Are you sure\")'>Delete</a>";
 }
 $conn = null;
 echo "</table>";
