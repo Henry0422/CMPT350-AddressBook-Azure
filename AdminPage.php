@@ -73,7 +73,7 @@
 				}
 		    }
 			catch(Exception $e){
-				die("Connection failed: ".print_r($e));
+				echo $sql."<br>".$e->getMessage();
 			}
 
 				
