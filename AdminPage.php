@@ -21,7 +21,7 @@ echo "<table style='border: solid 1px black;'>";
 class TableRows extends RecursiveIteratorIterator { 
      function __construct($it) { 
          parent::__construct($it, self::LEAVES_ONLY);
-         return "<a href='update.php?ContactID=".$row["id"]."'>Update</a>".
+         echo "<a href='update.php?ContactID=".$row["id"]."'>Update</a>".
  				"<a href='DeleteContact.php?ContactID=".$row["id"].
  				"'onclick='return confirm(\"Are you sure\")'>Delete</a>";
      }
