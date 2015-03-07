@@ -28,7 +28,6 @@
 			    $sql = "SELECT * FROM AddressBook";
 				$result = $conn->query($sql);
 			
-				}
 		    }
 			catch(Exception $e){
 				echo $sql."<br>".$e->getMessage();
