@@ -35,7 +35,6 @@
 				die("Connection failed: ".print_r($e));
 			}
 			
-			if($result->num_rows >0){
 				foreach($db->query('SELECT * FROM AddressBook') as $row) {
 					echo "<tr>
 							<td>".$row["id"]."</td>
@@ -60,10 +59,7 @@
 							</td>
 						</tr>";
 				}
-			}
-			else{
-				echo"0 result";
-			}
+
 		 //    $id=$_GET['ContactID'];
 			// $sql = "SELECT * FROM AddressBook";
 			// $result = $conn->exec($sql);
