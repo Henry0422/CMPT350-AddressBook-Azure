@@ -32,7 +32,9 @@ class TableRows extends RecursiveIteratorIterator {
      } 
 
      function endChildren() { 
-         echo "</tr>" . "\n";
+         echo "</tr>" ."<a href='update.php?ContactID=".$row["id"]."'>Update</a>".
+         				"<a href='DeleteContact.php?ContactID=".$row["id"].
+         				"'onclick='return confirm(\"Are you sure\")'>Delete</a>"."\n";
      } 
 } 
 
