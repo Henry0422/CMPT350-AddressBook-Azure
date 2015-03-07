@@ -30,7 +30,7 @@ class TableRows extends RecursiveIteratorIterator {
 	$dbname = "Assignment2";
 
 try {
-     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+     $conn = new PDO("sqlsrv:Server= $servername ; Database = $dbname ", $username, $password);
      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
      $stmt = $conn->prepare("SELECT * FROM AddressBook"); 
      $stmt->execute();
