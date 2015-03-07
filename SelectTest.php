@@ -35,7 +35,7 @@
                 die("Connection failed: ".print_r($e));
             }
                 
-            
+            $id=$_GET['ContactID'];
             $sql = "SELECT * FROM AddressBook";
             $result = $conn->query($sql);
         
@@ -56,9 +56,9 @@
                         <a href='update.php?ContactID=".$row["id"]."'>
                             Update
                         </a>
-                            <a href='DeleteContact.php?ContactID=".$row["id"]."'
-                            onclick='return confirm(\"Are you sure\")'>
-                            Delete
+                        <a href='DeleteContact.php?ContactID=".$row["id"]."'
+                        onclick='return confirm(\"Are you sure\")'>
+                        Delete
                         </a>
                     </td>
                 </tr>";
