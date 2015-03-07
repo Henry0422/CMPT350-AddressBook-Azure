@@ -67,6 +67,9 @@
 					</tr>";
 				}
 			}
+			else{
+				echo "0 Contact";
+			}
 				
 		 ?>
 		 </table>
