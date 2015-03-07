@@ -43,7 +43,7 @@
 				$result = $conn->query($sql);
 			
 				if($result->rowCount()>0){
-					while($row = $result->fetch_assoc()){
+					while($result as $row){
 						echo "<tr>
 							<td>".$row['id']."</td>
 							<td>".$row['firstname']." </td>
