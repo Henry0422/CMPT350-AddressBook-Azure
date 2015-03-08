@@ -1,43 +1,71 @@
 <!DOCTYPE html>
 
 <html>
-	<head>
-	</head>
-	<body>
-		<?php
-			$server = "tcp:gpntf5hrgo.database.windows.net,1433";
-			$user = "SQLAdmin";
-			$pwd = "henry0422!";
-			$db = "Assignment2";
-			try{
-				$conn = new PDO( "sqlsrv:Server= $server ; Database = $db ", $user, $pwd);
-				$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-				echo "Connection successfully</br>";
-			}
-			catch(Exception $e){
-				die("Connection failed: ".print_r($e));
-			}
+    <head>
+    </head>
+    <body>
+        <a href='add.php'>
+            Add New Contact</br>
+        </a>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Company</th>
+                <th>Phone No.</th>
+                <th>Email</th>
+                <th>URL</th>
+                <th>Address</th>
+                <th>Birthday</th>
+                <th>Date</th>
+                <th>Note</th>
+            </tr>
+        <?php
+            $server = "tcp:gpntf5hrgo.database.windows.net,1433";
+            $user = "SQLAdmin";
+            $pwd = "henry0422!";
+            $db = "Assignment2";
+            try{
+                $conn = new PDO( "sqlsrv:Server= $server ; Database = $db ", $user, $pwd);
+                $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+                echo "Connection successfully</br>";
+            }
+            catch(Exception $e){
+                die("Connection failed: ".print_r($e));
+            }
+                
+            $id=$_GET['ContactID'];
+            $sql = "SELECT * FROM AddressBook";
+            $result = $conn->query($sql);
+        
+            while($row = $row = $result->fetch(PDO::FETCH_ASSOC) ){
+                echo "<tr>
+                    <td>".$row["id"]."</td>
+                    <td>".$row["firstname"]." </td>
+                    <td>".$row["lastname"]."</td>
+                    <td>".$row["company"]."</td>
+                    <td>".$row["phone"]."</td>
+                    <td>".$row["email"]."</td>
+                    <td>".$row["url"]."</td>
+                    <td>".$row["address"]."</td>
+                    <td>".$row["birthday"]."</td>
+                    <td>".$row["add_date"]."</td>
+                    <td>".$row["note"]."</td>
+                    <td>
+                        <a href='update.php?ContactID=".$row["id"]."'>
+                            Update
+                        </a>
+                        <a href='DeleteContact.php?ContactID=".$row["id"]."'
+                        onclick='return confirm(\"Are you sure\")'>
+                        Delete
+                        </a>
+                    </td>
+                </tr>";
+            }
 
-			try{
-				$sql = "CREATE TABLE AddressBook(
-					id INT IDENTITY(1,1) PRIMARY KEY,
-					firstname VARCHAR(30) NOT NULL,
-					lastname VARCHAR(30) NOT NULL,
-					company VARCHAR(30) NULL,
-					phone INT NOT NULL,
-					email VARCHAR(255) NOT NULL,
-					url VARCHAR(255) Null,
-					address VARCHAR(255) NOT NULL,
-					birthday DATE NULL,
-					add_date DATE NOT NULL,
-					note VARCHAR(255) NULL
-				)";
-				$conn->exec($sql);
-				echo "Table AddressBook created succefully";
-			}
-			catch(PDOException $e){
-				echo $sql."<br>".$e->getMessage();
-			}
-		 ?> 
-	</body>
+                
+         ?>
+         </table>
+    </body>
 </html>
