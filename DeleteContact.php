@@ -16,14 +16,15 @@
 			}
 			catch(Exception $e){
 				die("Connection failed: ".print_r($e));
-				
-			$id=$_GET['ContactID'];
-			$sql = "DELETE FROM AddressBook WHERE id=".$id;
 			
-			if($conn->query($sql) == TRUE)
-				echo "Record delete Successfully</br>";
-			else
-				echo "Error Delete record: ".$conn->error;
+			try{			
+				$id=$_GET['ContactID'];
+				$sql = "DELETE FROM AddressBook WHERE id=".$id;
+			}	
+
+			catch(PDOException $e){
+				echo $sql."<br>".$e->getMessage();
+			}
 		 ?> 
 		 <a href='AdminPage.php'>
 			Go back</br>

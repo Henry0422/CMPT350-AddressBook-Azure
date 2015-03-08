@@ -35,6 +35,8 @@
 			else
 				echo "Error updating record: " .$conn->error;
 		 ?> 
-
+		 <a href='AdminPage.php'>
+			Go Back</br>
+		</a>
 	</body>
 </html>
