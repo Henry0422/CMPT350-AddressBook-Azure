@@ -16,6 +16,7 @@
 			}
 			catch(Exception $e){
 				die("Connection failed: ".print_r($e));
+			}
 			
 			try{			
 				$id=$_GET['ContactID'];
