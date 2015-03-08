@@ -21,7 +21,7 @@
 			try{			
 				$id=$_GET['ContactID'];
 				$sql = "DELETE FROM AddressBook WHERE id=".$id;
-				$conn->query($sql)
+				$conn->query($sql);
 			}	
 
 			catch(PDOException $e){
