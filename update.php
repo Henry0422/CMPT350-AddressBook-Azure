@@ -116,20 +116,7 @@
 	</head>
 	<body>
 		<h2>Update Contact</h2>
-		<?php
-			$servername="lovett.usask.ca";
-		    $username="cmpt350_roh919";
-		    $password="npig97rako";
-			$dbname="cmpt350_roh919";
-			
-		    $conn = new mysqli($servername, $username, $password, $dbname);
 
-		    if($conn->connect_error)
-				die("Connection failed".$conn->connect_error);
-		    else
-				echo "Connection successfully</br>";
-			$id=$_GET['ContactID'];
-		?>
 		
 		<div id="error">
 			Please check for errors!
