@@ -1,0 +1,19 @@
+<nav class="navbar navbar-default" style="margin-bottom: -10px;   border-bottom-width: 0px">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">CMPT350 Assing2-B</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="http://homepage.usask.ca/~roh919/A2MySQL/home.php">MySQL Address Book</a></li>
+        <li  class="active">
+            <a href="http://cmpt350a2.azurewebsites.net/home.php">Azure Address Book<span class="sr-only">(current)</span>
+            </a>
+        </li>
+        <li><a href="#">Documentation</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

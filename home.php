@@ -11,34 +11,14 @@
     <title>Azure Address Book</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-	
-	<style>
-	 .drop-shadow {
-        -webkit-box-shadow: 0 0 5px 2px rgba(0, 0, 0, .5);
-        box-shadow: 0 0 5px 2px rgba(0, 0, 0, .5);
-	</style>
-	
+    <link href="css/bootstrap.min.css" rel="stylesheet">	
 	
   </head>
 <!-- NAVBAR
 ================================================== -->
   <body>
-    
-	<div class="jumbotron" id="jumbotron">
-      <div class="container" align="center">
-	  <!--<img class="img-responsive  img-circle img-thumbnail" src="mike.jpg"> -->
-        <h1 id="name">Azure Address Book</h1>
-		<hr class="star-light">
-		<h3 id="title"> Author: roh919</h3>
-   
-      </div>
-    </div>
-
-
-
-    
+    <?php include_once("navbar.php");?>
+    <?php include_once("header.php");?>
 
     <div class="container-fluid">
 

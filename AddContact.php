@@ -23,20 +23,7 @@
 <!-- NAVBAR
 ================================================== -->
   <body>
-    
-	<div class="jumbotron" id="jumbotron">
-      <div class="container" align="center">
-	  <!--<img class="img-responsive  img-circle img-thumbnail" src="mike.jpg"> -->
-        <h1 id="aname">Azure Address Book</h1>
-		<hr class="star-light">
-		<h3 id="title"> Author: roh919</h3>
-   
-      </div>
-    </div>
-
-
-
-    
+    <?php include_once("header.php");?>
 
     <div class="container">
 
