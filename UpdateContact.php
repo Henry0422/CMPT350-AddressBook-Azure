@@ -12,14 +12,6 @@
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
-   
-	
-	<style>
-	 .drop-shadow {
-        -webkit-box-shadow: 0 0 5px 2px rgba(0, 0, 0, .5);
-        box-shadow: 0 0 5px 2px rgba(0, 0, 0, .5);
-	</style>
 	
 	
   </head>
