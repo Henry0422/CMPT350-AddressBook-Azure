@@ -13,7 +13,6 @@
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
-   
 	
 	<style>
 	 .drop-shadow {
@@ -42,129 +41,107 @@
     
 
     <div class="container-fluid">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+		<div class="col-lg-3"  >
+			<div class="panel panel-default">
+				<div class="panel-heading text-center">
+					<h4>Add a Contact</h4>
+				</div>
+				<div class="panel-body">
+					<div id="error">
+					Please check for errors!
+				</div>
+				  <form class="form-horizontal" action="addContact.php" method="post" >
+					<div class="form-group">
+					  <label for="fname" class="col-xs-3">First Name:</label>
+					  <div class=" col-xs-8">
+						<input type="text" class="form-control" name="fname" id="fanme" placeholder="Enter first name">
+					  </div>
+					</div>
+					<div class="form-group">
+					  <label for="lname" class="col-xs-3">Last Name:</label>
+					  <div class=" col-xs-8">
+					  <input type="text" class="form-control" name="lname"id="lname" placeholder="Enter last name">
+					</div></div>
+					<div class="form-group">
+					  <label for="company" class="col-xs-3">Company:</label>
+					  <div class=" col-xs-8">
+					  <input type="text" class="form-control" name="company"id="company" placeholder="Enter company name">
+					</div></div>
+					<div class="form-group">
+					  <label for="phone" class="col-xs-3">Phone:</label>
+					  <div class=" col-xs-8">
+					  <input type="number" class="form-control" name="phone"id="phone" placeholder="Enter phone">
+					</div></div>
+					<div class="form-group">
+					  <label for="email" class="col-xs-3">Email:</label>
+					  <div class=" col-xs-8">
+					  <input type="email" class="form-control" name="email"id="email" placeholder="Enter email">
+					</div></div>
+					<div class="form-group">
+					  <label for="url" class="col-xs-3">URL:</label>
+					  <div class=" col-xs-8">
+					  <input type="text" class="form-control"name="url"id="url" placeholder="Enter URL">
+					</div></div>
+					<div class="form-group">
+					  <label for="address" class="col-xs-3">Address:</label>
+					  <div class=" col-xs-8">
+					  <input type="text" class="form-control"name="address"id="address" placeholder="Enter address">
+					</div></div>
+					<div class="form-group">
+					  <label for="brithday" class="col-xs-3">Birthday:</label>
+					  <div class="col-xs-8">
+					  <input type="date" class="form-control"name="birthday"id="birthday" >
+					</div></div>
+					<div class="form-group">
+					  <label for="add_date" class="col-xs-3">Date:</label>
+					  <div class=" col-xs-8">
+					  <input type="date" class="form-control"name="add_date"id="add_date" >
+					</div></div>
+					<div class="form-group">
+					  <label for="note" class="col-xs-3">Notes:</label>
+					  <div class=" col-xs-8">
+					  <input type="text" class="form-control"name="note"id="note" placeholder="Enter a note">
+					</div></div>
+					<div class="cl-xs-12">
+						<button class="btn btn-block btn-custom" type="submit" id="submit" >Submit</button>
+					</div>
+					
+				  </form>
+				</div>
+			</div>
+        </div><!-- /.col-lg-3 -->
 		
 		<?php
 			$server = "tcp:gpntf5hrgo.database.windows.net,1433";
-			$user = "SQLAdmin";
-			$pwd = "henry0422!";
-			$db = "Assignment2";
+            $user = "SQLAdmin";
+            $pwd = "henry0422!";
+            $db = "Assignment2";
+            try{
+                $conn = new PDO( "sqlsrv:Server= $server ; Database = $db ", $user, $pwd);
+                $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+                //echo "Connection successfully</br>";
+            }
+            catch(Exception $e){
+                die("Connection failed: ".print_r($e));
+            }
+                
+            //$id=$_GET['ContactID'];
+            $sql = "SELECT * FROM AddressBook";
+            $result = $conn->query($sql);
 			
-			try{
-				$conn = new PDO( "sqlsrv:Server= $server ; Database = $db ", $user, $pwd);
-				$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-				//echo "Connection successfully</br>";
-			}
-			catch(Exception $e){
-				die("Connection failed: ".print_r($e));
-			}
-			
-			$id=$_GET['ContactID'];
-			$sql = "SELECT * FROM AddressBook WHERE id=".$id;
-			$result = $conn->query($sql);
-			
-			//if($result->num_rows > 0){
-				$row = $result->fetch(PDO::FETCH_ASSOC);
-				
-				
-				$adate = strtotime($row["add_date"]);
-				//echo "<p>".$bday."</p>";
-				$adate = date('Y-m-d', $adate);
-				//echo "<p>".$adate."</p>";
-				
-				echo "
-					<div class='row'>
-						<div class='col-lg-3'  >
-							<div class='panel panel-default'>
-								<div class='panel-heading text-center'>
-									<h4>Update Contact</h4>
-								</div>
-								<div class='panel-body'>
-									<div id='error'>
-									Please check for errors!
-								</div>
-								  <form class='form-horizontal' action='update.php' method='post' >
-									<input type='hidden' name='contact_id' value='".$_GET['ContactID']."' />
-									<div class='form-group'>
-									  <label for='fname' class='col-xs-3'>First Name:</label>
-									  <div class=' col-xs-8'>
-										<input type='text' class='form-control' name='fname' id='fanme' value='".$row["firstname"]."'>
-									  </div>
-									</div>
-									<div class='form-group'>
-									  <label for='lname' class='col-xs-3'>Last Name:</label>
-									  <div class=' col-xs-8'>
-									  <input type='text' class='form-control' name='lname'id='lname' value='".$row["lastname"]."'>
-									</div></div>
-									<div class='form-group'>
-									  <label for='company' class='col-xs-3'>Company:</label>
-									  <div class=' col-xs-8'>
-									  <input type='text' class='form-control' name='company'id='company' value='".$row["company"]."'>
-									</div></div>
-									<div class='form-group'>
-									  <label for='phone' class='col-xs-3'>Phone:</label>
-									  <div class=' col-xs-8'>
-									  <input type='number' class='form-control' name='phone'id='phone' value='".$row["phone"]."'>
-									</div></div>
-									<div class='form-group'>
-									  <label for='email' class='col-xs-3'>Email:</label>
-									  <div class=' col-xs-8'>
-									  <input type='email' class='form-control' name='email'id='email' value='".$row["email"]."'>
-									</div></div>
-									<div class='form-group'>
-									  <label for='url' class='col-xs-3'>URL:</label>
-									  <div class=' col-xs-8'>
-									  <input type='text' class='form-control'name='url'id='url' value='".$row["url"]."'>
-									</div></div>
-									<div class='form-group'>
-									  <label for='address' class='col-xs-3'>Address:</label>
-									  <div class=' col-xs-8'>
-									  <input type='text' class='form-control'name='address'id='address' value='".$row["address"]."'>
-									</div></div>
-									<div class='form-group'>
-									  <label for='brithday' class='col-xs-3'>Birthday:</label>
-									  <div class='col-xs-8'>
-									  <input type='date' class='form-control'name='birthday' id='birthday'  >
-									</div></div>
-									<div class='form-group'>
-									  <label for='add_date' class='col-xs-3'>Date:</label>
-									  <div class=' col-xs-8'>
-									  <input type='date' class='form-control'name='add_date' id='add_date' value='".$adate."'>
-									</div></div>
-									<div class='form-group'>
-									  <label for='note' class='col-xs-3'>Notes:</label>
-									  <div class=' col-xs-8'>
-									  <input type='text' class='form-control'name='note'id='note' value='".$row["note"]."' >
-									</div></div>
-									<div class='cl-xs-12'>
-										<button class='btn btn-block btn-custom' type='submit' id='submit' >Save Changes</button>
-										<a class='btn btn-warning btn-block' href='home.php'>
-													Cancel
-												</a>
-									</div>
-									
-								  </form>
-								  </div>
-							</div>
-						</div>";
-			
-			//}
-			
-			
-			
-			
-			
-			
-			$sql= "SELECT * FROM AddressBook";
-			$result = $conn->query($sql);
 			$ctr = 1;
 			
-			//if($result->num_rows > 0){
+			//if($result->rowCount() > 0){
 			echo "<div class='col-lg-9'>";
 				while($row = $result->fetch(PDO::FETCH_ASSOC)){
 					if($ctr == 1){
 						echo	"
+							
 								<div class='row'>
-									<div class='col-lg-4 img-rounded'  >
+									<div class='col-lg-4 '>
 										<div class='panel panel-default'  >
 											<div class='panel-heading text-center'>
 														<h4>".$row["firstname"]." ".$row["lastname"]."</h4>
@@ -179,26 +156,14 @@
 												<p>Date: ".$row["add_date"]."</p>
 												<p>Note: ".$row["note"]."</p>
 											</div>
-											<div class='panel-footer'>";
-												
-							if($id == $row["id"]){
-								echo "	<a class='btn btn-warning btn-block disabled' href='updateContact.php?ContactID=".$row["id"]."'>
-												Update
-											</a>
-											<a class='btn btn-danger btn-block disabled' href='deleteContact.php?ContactID=".$row["id"]."' 
-												onclick='return confirm(\"This cannot be undone,are you sure?\")'>
-												Delete
-											</a>";
-							}else{
-								echo "		<a class='btn btn-warning btn-block' href='updateContact.php?ContactID=".$row["id"]."'>
+											<div class='panel-footer'>
+												<a class='btn btn-custom btn-block' href='updateContact.php?ContactID=".$row["id"]."'>
 													Update
 												</a>
-												<a class='btn btn-danger btn-block ' href='deleteContact.php?ContactID=".$row["id"]."' 
+												<a class='btn btn-danger btn-block' href='deleteContact.php?ContactID=".$row["id"]."' 
 													onclick='return confirm(\"This cannot be undone,are you sure?\")'>
 													Delete
-												</a>";
-							}
-							echo "
+												</a>
 											</div>
 										</div>
 									</div>
@@ -221,26 +186,15 @@
 												<p>Date: ".$row["add_date"]."</p>
 												<p>Note: ".$row["note"]."</p>
 											</div>
-											<div class='panel-footer'>";
+											<div class='panel-footer'>
 												
-							if($id == $row["id"]){
-								echo "	<a class='btn btn-warning btn-block disabled' href='updateContact.php?ContactID=".$row["id"]."'>
-												Update
-											</a>
-											<a class='btn btn-danger btn-block disabled' href='deleteContact.php?ContactID=".$row["id"]."' 
-												onclick='return confirm(\"This cannot be undone, are you sure?\")'>
-												Delete
-											</a>";
-							}else{
-								echo "		<a class='btn btn-warning btn-block' href='updateContact.php?ContactID=".$row["id"]."'>
+												<a class='btn btn-block btn-custom' href='updateContact.php?ContactID=".$row["id"]."'>
 													Update
 												</a>
-												<a class='btn btn-danger btn-block ' href='deleteContact.php?ContactID=".$row["id"]."' 
-													onclick='return confirm(\"This cannot be undone, are you sure?\")'>
+												<a class='btn btn-block btn-danger' href='deleteContact.php?ContactID=".$row["id"]."' 
+													onclick='return confirm(\"This cannot be undone,are you sure?\")'>
 													Delete
-												</a>";
-							}
-							echo "
+												</a>
 											</div>
 										</div>
 									</div>";
