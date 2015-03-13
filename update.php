@@ -1,144 +1,112 @@
 <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
 
-<html>
-	<head>
-		<style type="text/css">
-			.error, #error { color: red; }
-		</style>
-		
-		<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-		<script type="text/javascript">
-			$(document).ready(function(){
-				$('#submit').click(function(){
-					return validForm();   
-				});
-				$('#error').hide();
-			});
- 
-			function validForm(){
-				var nameReg = /^[A-Za-z]+$/;
-				var ccReg = /^[0-9]{16}$/;
-				var dateReg = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/;
-				var emailReg = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-				var urlReg = /(http|ftp|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?/;
+    <title>Azure Address Book</title>
 
-				var fname = $('#fname').val();
-				var lname = $('#lname').val();
-				var company = $('#company').val();
-				var phone = $('#phone').val();
-				var email = $('#email').val();
-				var url = $('#url').val();
-				var address = $('#address').val();
-				var birthday = $('#birthday').val();
-				var addDate = $('#add_date').val();
-				var note = $('note').val();
-				
-				var err = false;
-				$('.error').hide();
-				$('#error').hide();
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+  
+	
+	<style>
+	 .drop-shadow {
+        -webkit-box-shadow: 0 0 5px 2px rgba(0, 0, 0, .5);
+        box-shadow: 0 0 5px 2px rgba(0, 0, 0, .5);
+	</style>
+  </head>
+<!-- NAVBAR
+================================================== -->
+  <body>
+    
+	<div class="jumbotron" id="jumbotron">
+      <div class="container" align="center">
+	  <!--<img class="img-responsive  img-circle img-thumbnail" src="mike.jpg"> -->
+        <h1 id="aname">Azure Address Book</h1>
+		<hr class="star-light">
+		<h3 id="title"> Author: roh919</h3>
+   
+      </div>
+    </div>
 
-				if(fname == ""){
-					$('#error').after('<div class="error"> Please enter the first name</div>');
-					$('#fname').after('<span class="error">*</span>');
-					$('#error').show();
-					err = true;
-				}
-				else if(!nameReg.test(fname)){
-					$('#error').after('<div class="error">Letters only</div>');
-					$('#fname').after('<span class="error">*</span>');
-					$('#error').show();
-					err = true;
-				}
 
-				if(lname == ""){
-					$('#error').after('<div class="error"> Please enter the last name</div>');
-					$('#lname').after('<span class="error">*</span>');
-					$('#error').show();
-					err = true;
-				}
-				else if(!nameReg.test(lname)){
-					$('#error').after('<div class="error"> Letters only</div>');
-					$('#lname').after('<span class="error">*</span>');
-					$('#error').show();
-					err = true;
-				}
 
-				if(email == ""){
-					$('#error').after('<div class="error"> Please enter the email</div>');
-					$('#email').after('<span class="error">*</span>');
-					$('#error').show();
-					err = true;
-				}
-				else if(!emailReg.test(email)){
-					$('#error').after('<div class="error"> You need a valid email address like: abc123@gmail.com</div>');
-					$('#email').after('<span class="error">*</span>');
-					$('#error').show();
-					err = true;
-				}
-				
-				if( (url != "") && (!urlReg.test(url)) ){
-					$('#error').after('<div class="error"> You need a valid url</div>');
-					$('#url').after('<span class="error">*</span>');
-					$('#error').show();
-					err = true;
-				}
-				
-				if(phone == ""){
-					$('#error').after('<div class="error"> Please enter phone number</div>');
-					$('#phone').after('<span class="error">*</span>');
-					$('#error').show();
-					err = true;
-				}
-				
-				if( (birthday != "") && (!dateReg.test(birthday)) ){
-					$('#error').after('<div class="error"> You need a valid birthday, YYYY-MM-DD only </div>');
-					$('#birthday').after('<span class="error">*</span>');
-					$('#error').show();
-					err = true;
-				}
-				
-				if(addDate == ""){
-					$('#error').after('<div class="error"> Please enter add contact date</div>');
-					$('#add_date').after('<span class="error">*</span>');
-					$('#error').show();
-					err = true;
-				}
-				else if(!dateReg.test(addDate)){
-					$('#error').after('<div class="error">You need a valid add contact date,YYYY-MM-DD only</div>');
-					$('#add_date').after('<span class="error">*</span>');
-					$('#error').show();
-					err = true;
-				}
-				
-				return !err;
+    
+
+    <div class="container">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+		<?php
+			$server = "tcp:gpntf5hrgo.database.windows.net,1433";
+            $user = "SQLAdmin";
+            $pwd = "henry0422!";
+            $db = "Assignment2";
+            try{
+                $conn = new PDO( "sqlsrv:Server= $server ; Database = $db ", $user, $pwd);
+                $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+                //echo "Connection successfully</br>";
+            }
+            catch(Exception $e){
+                die("Connection failed: ".print_r($e));
+            }
+			
+			
+			
+			$sql = "Update AddressBook 
+				SET firstname = '".$_POST['fname']."',
+					lastname = '".$_POST['lname']."',
+					company = '".$_POST['company']."',
+					phone = '".$_POST['phone']."',
+					email = '".$_POST['email']."',
+					url = '".$_POST['url']."',
+					address = '".$_POST['address']."',";
+					
+			if(!empty($_POST["birthday"])){
+				$sql .= "birthday = '".$_POST['birthday']."',";
 			}
-		</script>
-	</head>
-	<body>
-		<h2>Update Contact</h2>
+					
+			$sql .=	"add_date = '".$_POST['add_date']."',
+						note ='".$_POST["note"]."'
+				WHERE id=".$_POST['contact_id'];
+				
+			if($conn->query($sql) == TRUE)
+				echo "<div class='alert alert-success' role='alert'><h1>Contact has been updated! </h1></br>You are being redirected
+						  <a href='home.php class='alert-link'>Home.</a>
+						</div>";
+			else
+				echo "<div class='alert alert-danger' role='alert'>Error updating contact :".$conn->error."
+						</div><a href='home.php class='alert-link'>Go Home.</a>";
+				
+			header("Refresh: 5; url=home.php");
+		 ?> 
+        
+      </div><!-- /.row -->
 
-		
-		<div id="error">
-			Please check for errors!
-		</div>
-		<form action='UpdateContact.php' method="post">
-			<?php
-				echo '<input type="hidden" name="contact_id" value="'.$_GET['ContactID'].'" />'."\n";
-			?>
-			First Name: <input type="text" name="fname" id="fname" /><br/>
-			Last Name: <input type="text"  name="lname" id="lname" /><br/>
-			Company: <input type="text" name="company" id="company" /><br/>
-			Phone: <input type="int" name="phone" id="phone" /><br/>
-			Email: <input type="text" name="email" id="email" /><br/>
-			URL: <input type="text" name="url" id="url" /><br/>
-			Address: <input type="text" name="address" id="address" /><br/>
-			Birthday: <input type="date" name="birthday" id="birthday" /><br/>
-			Date: <input type="date" name="add_date" id="add_date" /><br/>
-			Notes: <input type="text" name="note" id="note" /><br/>
-			<input type="submit" id="submit" />
-		</form>
-		<a href='AdminPage.php'>
-			Go Back</br>
-		</a>
-	</body>
+
+      
+
+
+      <!-- FOOTER -->
+      <footer>
+       
+      </footer>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
 </html>
