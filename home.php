@@ -142,8 +142,7 @@
 													Update
 												</a>
 												<a class='btn btn-danger btn-block' href='deleteContact.php?ContactID=".$row["id"]."' 
-													onclick='return confirm(\"Would you like to delete ".$row["firstname"]."
-                                                    ".$row["lastname"]." from Online Contact?\")'>
+													onclick='return confirm(\"This cannot be undone,are you sure?\")'>
 													Delete
 												</a>
 											</div>
@@ -174,8 +173,7 @@
 													Update
 												</a>
 												<a class='btn btn-block btn-danger' href='deleteContact.php?ContactID=".$row["id"]."' 
-													onclick='return confirm(\"Would you like to delete ".$row["firstname"]." 
-                                                    ".$row["lastname"]." from Online Contact?\")'>
+													onclick='return confirm(\"This cannot be undone,are you sure?\")'>
 													Delete
 												</a>
 											</div>
