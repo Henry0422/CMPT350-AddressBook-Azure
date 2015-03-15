@@ -58,7 +58,7 @@
 				WHERE id=".$_POST['contact_id'];
 				
 			if($conn->query($sql) == TRUE)
-				echo "<div class='alert alert-success' role='alert'><h1>Contact has been updated! </h1></br>You are being redirected
+				echo "<div class='alert alert-success' role='alert'><h1>Contact ".$_POST['fname']." ".$_POST['lname']." has been updated</h1></br>You are being redirected
 						  <a href='home.php class='alert-link'>Home.</a>
 						</div>";
 			else

@@ -12,7 +12,7 @@
             <a href="http://cmpt350a2.azurewebsites.net/home.php">Azure Online Contact<span class="sr-only">(current)</span>
             </a>
         </li>
-        <li><a href="#">Documentation</a></li>
+        <li><a href="http://homepage.usask.ca/~roh919/A2MySQL/README.md">Documentation</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
