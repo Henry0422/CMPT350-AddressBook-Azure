@@ -7,9 +7,9 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="http://homepage.usask.ca/~roh919/A2MySQL/home.php">MySQL Address Book</a></li>
+        <li><a href="http://homepage.usask.ca/~roh919/A2MySQL/home.php">MySQL Online Contact</a></li>
         <li  class="active">
-            <a href="http://cmpt350a2.azurewebsites.net/home.php">Azure Address Book<span class="sr-only">(current)</span>
+            <a href="http://cmpt350a2.azurewebsites.net/home.php">Azure Online Contact<span class="sr-only">(current)</span>
             </a>
         </li>
         <li><a href="#">Documentation</a></li>
