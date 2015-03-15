@@ -174,7 +174,8 @@
 													Update
 												</a>
 												<a class='btn btn-danger btn-block ' href='deleteContact.php?ContactID=".$row["id"]."' 
-													onclick='return confirm(\"This cannot be undone,are you sure?\")'>
+													onclick='return confirm(\"Would you like to delete ".$row["firstname"]." 
+                                                    ".$row["lastname"]." from Online Contact?\")'>
 													Delete
 												</a>";
 							}
@@ -216,7 +217,8 @@
 													Update
 												</a>
 												<a class='btn btn-danger btn-block ' href='deleteContact.php?ContactID=".$row["id"]."' 
-													onclick='return confirm(\"This cannot be undone, are you sure?\")'>
+													onclick='return confirm(\"Would you like to delete ".$row["firstname"]." 
+                                                    ".$row["lastname"]." from Online Contact?\")'>
 													Delete
 												</a>";
 							}
