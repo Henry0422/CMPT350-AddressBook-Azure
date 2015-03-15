@@ -62,7 +62,7 @@
 						  <a href='home.php' class='alert-link'>Home.</a>
 						</div>";
 			else
-				echo "<div class='alert alert-danger' role='alert'>Error updating contact :".$conn->error."
+				echo "<div class='alert alert-danger' role='alert'>Error updating contact :".$e->getMessage()."
 						</div><a href='home.php' class='alert-link'>Go Home.</a>";
 				
 			header("Refresh: 5; url=home.php");
