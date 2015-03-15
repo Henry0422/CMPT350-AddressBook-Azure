@@ -63,7 +63,7 @@
 						</div>";
 			else
 				echo "<div class='alert alert-danger' role='alert'>Error updating contact :".$conn->error."
-						</div><a href='home.php class='alert-link'>Go Home.</a>";
+						</div><a href='home.php' class='alert-link'>Go Home.</a>";
 				
 			header("Refresh: 5; url=home.php");
 		 ?> 
