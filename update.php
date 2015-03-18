@@ -42,7 +42,7 @@
                 echo "<div class='alert alert-danger' role='alert'>403 Forbidden<br>
                     You are not able to access update.php directly</br>
                     Automatically redirect to home page in 5 seconds</div>
-                    <a href='homePage.php' class='alert-link'>Go Home.</a>";
+                    <a href='home.php' class='alert-link'>Go Home.</a>";
             }
 
             else{
