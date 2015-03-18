@@ -37,20 +37,32 @@
 			catch(Exception $e){
 				die("Connection failed: ".print_r($e));
 			}
-			
-			try{
-				$id=$_GET['ContactID'];
-				$sql = "DELETE FROM AddressBook WHERE id=".$id;
+
+			if($_GET['ContactID'] == ""){
+				echo "<div class='alert alert-danger' role='alert'>403 Forbidden</br>
+				  Unable to delete undifined contact</br>
+				  You are not able to access DeleteContact.php directly</br>
+				  Automatically redirect to home page in 5 seconds</div>
+				 <a href='home.php' class='alert-link'>Go Home.</a>";
+			}
+
+			else{
+				try{
+					$id=$_GET['ContactID'];
+					$sql = "DELETE FROM AddressBook WHERE id=".$id;
+						
+					$conn->query($sql) ;
 					
-				$conn->query($sql) ;
+					echo  "<div class='alert alert-success' role='alert'><h1>Contact ".$row["firstname"]." ".$row["lastname"]." has been Deleted!</h1> You are being redirected<a href='home.php' class='alert-link'>Home.</a></div>";
+					
+				}
 				
-				echo  "<div class='alert alert-success' role='alert'><h1>Contact ".$row["firstname"]." ".$row["lastname"]." has been Deleted!</h1> You are being redirected<a href='home.php' class='alert-link'>Home.</a></div>";
-				
+				catch(PDOException $e){
+					echo  "<div class='alert alert-danger' role='alert'>Error deleting contact :".$e->getMessage()."</div><a href='home.php' class='alert-link'>Go Home.</a>";
+				}
 			}
 			
-			catch(PDOException $e){
-				echo  "<div class='alert alert-danger' role='alert'>Error deleting contact :".$e->getMessage()."</div><a href='home.php' class='alert-link'>Go Home.</a>";
-			}
+
 			header("Refresh: 5; url=home.php");
 		 ?> 
         
