@@ -1,10 +1,8 @@
-# CMPT350 Assignment2-Task B
+# CMPT350 Assignment3-Task B
 
 Name: Rongli Han
-NISD: roh919
-Student No.11146640
 
-Group programming with Michal Luczynski, NSID mjl556
+Group programming with Michal Luczynski
 
 MySQL database is on lovett.usask.ca server.
 Database name is cmpt350_roh919.
@@ -38,7 +36,7 @@ Otherwise, it will display the error message.
 
 Delete contact
 Click the delete botton below each contact card to delete a contact.
-First, it will show the alert box to ask you "Would you like to delete the contact?".
+First, it will pop up the alert box "Would you like to delete the contact?".
 Once you click confirm, it will delete the information in the database and show the delete success message on confirmation page.
 Otherwise, it will display the error message.
 After 4 seconds it will redirect to home page automatically.
