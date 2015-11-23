@@ -11,7 +11,7 @@ SQL database with is called Azure is on azure portal.
 Database name is Assignment2.
 And I use Azure website host since homepage.usask.ca does not have PDO driver.
 The website host is connected with a Github repository which is called CMPT350-A2-Azure.
-Here is URL https://github.com/Henry0422/CMPT350-A2-Azure.
+Here is URL https://github.com/Henry0422/CMPT350-AddressBook-Azure.
 
 
 Display Online Contacts
